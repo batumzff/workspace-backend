@@ -1,0 +1,21 @@
+{
+  "name": "07-nodejs_modules",
+  "version": "1.0.0",
+  "description": "NodeJs Modules\r built in /  single / multiple modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clarusway",
+    "modules"
+  ],
+  "author": "",
+  "license": "ISC",
+  "homepage": "www.clarusway.com",
+  "git repo": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2"
+}
+}
