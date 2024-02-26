@@ -2,7 +2,7 @@
 /*
     NodeJs SERVER
 */
-require('dotenv').config();
+require('dotenv').config(); // env file dan verileri alır ve process.env ye ekler
 // const PORT=process.env.PORT
 // const HOST=process.env.HOST
 // console.log(process.env);
@@ -11,7 +11,7 @@ const PORT=process.env?.PORT || 8000
 const HOST=process.env?.HOST || "127.0.0.1"
 
 // console.log("welcome");
-const http=require("node:http")
+const http=require("node:http") // server içiçn gerekli modulu çağırdık
     // http.createServer((param1,param2)=>{ ... })
     // http.createServer((request,response)=>{ ... })
     // http.createServer((req,res)=>{ 
@@ -33,6 +33,7 @@ const app= http.createServer((req,res)=>{
    // end points home: /, list: /list, test: /test
    /*
     if(req.url== '/'){
+        
         res.end('<h1> HOME Page </> ')
         // res.end('<h1> welcome  </> ')
     }
@@ -61,16 +62,16 @@ const app= http.createServer((req,res)=>{
     */
    // add methods
     if(req.url== '/'){
-     
+        console.log();
 
-        if(req.method=='GET') {  
+        if(req.method=='GET') {  // default GET 
             res.write('this ')
             res.write('is ')
             res.write('home ')
             res.write('page')
             res.end()
         }else if(req.method=='POST'){
-            res.statusCode=400 
+            res.statusCode=400  // default 200
             res.statusMessage="post yapamazsin"
             res.end(' can not use this method')
         }else if(req.method=='DELETE'){
