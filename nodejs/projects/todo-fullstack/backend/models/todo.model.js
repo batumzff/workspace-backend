@@ -30,6 +30,7 @@ const todoSchema = new mongoose.Schema(
         values: Object.values(PRIORITIES),
         message: "low,normal, high could be select",
       },
+      default: "normal",
     },
   },
   {
