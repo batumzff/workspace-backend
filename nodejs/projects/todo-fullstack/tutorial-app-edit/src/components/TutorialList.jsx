@@ -37,14 +37,14 @@ const TutorialList = ({ tutorials, getTutorials }) => {
   console.log(editData);
 
   return (
-    <div className="container mt-4">
-      <table className="table table-striped">
+    <div className='container mt-4'>
+      <table className='table table-striped'>
         <thead>
           <tr>
-            <th scope="col">#id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col" className="text-center">
+            <th scope='col'>#id</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Description</th>
+            <th scope='col' className='text-center'>
               Edit
             </th>
           </tr>
@@ -57,19 +57,19 @@ const TutorialList = ({ tutorials, getTutorials }) => {
                 <th>{id}</th>
                 <td>{title}</td>
                 <td>{description}</td>
-                <td className="text-center text-nowrap">
+                <td className='text-center text-nowrap'>
                   <FaEdit
                     size={20}
-                    type="button"
-                    className="me-2 text-warning"
-                    data-bs-toggle="modal"
-                    data-bs-target="#open-modal"
+                    type='button'
+                    className='me-2 text-warning'
+                    data-bs-toggle='modal'
+                    data-bs-target='#open-modal'
                     onClick={() => setEditData(item)}
                   />
                   <AiFillDelete
                     size={22}
-                    type="button"
-                    className="text-danger "
+                    type='button'
+                    className='text-danger '
                     onClick={() => deleteTutorial(id)}
                   />
                 </td>
