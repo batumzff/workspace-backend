@@ -7,6 +7,12 @@ const router = require("express").Router()
 const User = require("../controllers/user.controller")
 
 // User:
+
+// Login/Logout:
+router.post('/login', User.login)
+router.all('/logout', User.logout)
+// router.get('/logout', User.logout)
+
 router.route('/')
     .get(User.list)
     .post(User.create)
@@ -15,9 +21,5 @@ router.route('/:userId')
     .put(User.update) // put patch aynı
     .patch(User.update)
     .delete(User.delete)
-// Login/Logout:
-router.post('/login', User.login)
-router.all('/logout', User.logout)
-// router.get('/logout', User.logout)
 
 module.exports = router
