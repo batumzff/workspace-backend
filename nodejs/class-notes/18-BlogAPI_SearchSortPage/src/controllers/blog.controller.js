@@ -92,8 +92,8 @@ module.exports.BlogPost = {
         // URL?page=3&limit=10
 
         let limit = Number(req.query?.limit)
-        limit = limit > 0 ? limit : (process.env.PAGE_SIZE || 20)
-        console.log(limit)
+        limit = limit > 0 ? limit : Number(process.env.PAGE_SIZE || 20)
+        console.log(typeof limit, limit)
 
 
         /* FILTERING & SEARCHING & SORTING & PAGINATION */
