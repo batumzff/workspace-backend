@@ -35,7 +35,7 @@ module.exports.BlogCategory = {
         })
     },
     read: async (req, res) => {
-        const data = await BlogCategory.find({ _id: req.params.categoryId })
+        const data = await BlogCategory.findOne({ _id: req.params.categoryId })
         res.status(202).send({
             error: false,
             data: data
@@ -43,7 +43,7 @@ module.exports.BlogCategory = {
     },
     update: async (req, res) => {
         const data = await BlogCategory.updateOne({ _id: req.params.categoryId }, req.body)
-        const newdata = await BlogCategory.find({ _id: req.params.categoryId })
+        const newdata = await BlogCategory.findOne({ _id: req.params.categoryId })
         res.status(202).send({
             error: false,
             body: req.body,
@@ -115,12 +115,13 @@ module.exports.BlogPost = {
         // const data = await BlogPost.find({ published: true })
         // const data = await BlogPost.find(filter)
         // const data = await BlogPost.find({ ...filter, ...search }).sort(sort).skip(skip).limit(limit)
-
-        const data = await res.getModelList(BlogPost)
+        
+        // const data = await BlogPost.find().populate('blogCategoryId')
+        const data = await res.getModelList(BlogPost, 'blogCategoryId')
 
         res.status(200).send({
             error: false,
-            details: await res.getModelListDetails(BlogCategory),
+            details: await res.getModelListDetails(BlogPost),
             data: data
         })
 
@@ -134,7 +135,7 @@ module.exports.BlogPost = {
         })
     },
     read: async (req, res) => {
-        const data = await BlogPost.find({ _id: req.params.postId })
+        const data = await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId')
         res.status(202).send({
             error: false,
             data: data
@@ -143,7 +144,7 @@ module.exports.BlogPost = {
     },
     update: async (req, res) => {
         const data = await BlogPost.updateOne({ _id: req.params.postId }, req.body)
-        const newdata = await BlogPost.find({ _id: req.params.postId })
+        const newdata = await BlogPost.findOne({ _id: req.params.postId })
         res.status(202).send({
             error: false,
             body: req.body,

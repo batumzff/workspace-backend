@@ -56,8 +56,8 @@ module.exports = (req, res, next) => {
 
     // const data = await BlogPost.find({ ...filter, ...search }).sort(sort).skip(skip).limit(limit)
 
-    res.getModelList = async function (Model) {
-        return await Model.find({ ...filter, ...search }).sort(sort).skip(skip).limit(limit)
+    res.getModelList = async function (Model, populate = null) {
+        return await Model.find({ ...filter, ...search }).sort(sort).skip(skip).limit(limit).populate(populate)
     }
 
     // Details:

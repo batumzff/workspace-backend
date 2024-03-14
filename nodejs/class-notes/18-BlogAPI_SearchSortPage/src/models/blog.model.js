@@ -25,7 +25,7 @@ const blogPostSchema = new mongoose.Schema({
     
     blogCategoryId: {
         type: mongoose.Schema.Types.ObjectId, // ForeignKey, RelationalID
-        ref: 'BlogCategory',
+        ref: 'BlogCategory', // Model Name
         required: true,
     },
 
