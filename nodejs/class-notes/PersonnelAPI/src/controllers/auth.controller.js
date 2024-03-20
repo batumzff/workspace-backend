@@ -4,6 +4,8 @@
 ------------------------------------------------------- */
 
 const Personnel = require('../models/personnel.model')
+const Token = require('../models/token.model')
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 module.exports = {
 
@@ -15,9 +17,12 @@ module.exports = {
 
         if (username && password) {
 
+            //? findOne, passwordu modeldeki set metodundaki encrypt i kullanarak db'de filtreleme yapar
             const user = await Personnel.findOne({ username, password })
             if (user) {
 
+                /* SESSION *
+                
                 // Set Session:
                 req.session = {
                     id: user._id,
@@ -27,6 +32,22 @@ module.exports = {
                 if (req.body?.rememberMe) {
                     req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3 // 3 Days
                 }
+
+                /* SESSION */
+
+                /* TOKEN */
+
+                // Token var mı?
+                let tokenData = await Token.findOne({ userId: user._id })
+
+                // Eğer token yoksa oluştur:
+                if (!tokenData) {
+                    const tokenKey = passwordEncrypt(user._id + Date.now())
+                    // console.log(typeof tokenKey, tokenKey)
+                    tokenData = await Token.create({ userId: user._id, token: tokenKey })
+                }
+                
+                /* TOKEN */
 
                 res.status(200).send({
                     error: false,
