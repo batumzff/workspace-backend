@@ -51,6 +51,7 @@ module.exports = {
 
                 res.status(200).send({
                     error: false,
+                    token: tokenData.token,
                     user
                 })
 
@@ -65,8 +66,15 @@ module.exports = {
     },
 
     logout: async (req, res) => {
+        /* SESSION *
         // Set session to null:
         req.session = null
+        /* SESSION */
+
+        /* TOKEN */
+
+        /* TOKEN */
+
         res.status(200).send({
             error: false,
             message: 'Logout: Sessions Deleted.'
