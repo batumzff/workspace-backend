@@ -20,7 +20,7 @@ const options = {
 };
 /* ------------------------------------------------------- */
 
-// const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0' })
+// const swaggerAutogen = require('swagger-autogen')({ openapi: '3.0.0', language: 'tr-tr' })
 const swaggerAutogen = require('swagger-autogen')()
 const packageJson = require('./package.json')
 
@@ -44,16 +44,16 @@ const document = {
 	host: `${HOST}:${PORT}`,
 	basePath: '/',
 	schemes: ['http', 'https'],
-	// JWT Settings:
+	// SimpleToken Settings:
 	securityDefinitions: {
-		JWT: {
+		Token: {
 			type: 'apiKey',
 			in: 'header',
 			name: 'Authorization',
-			description: 'Enter Your AccessToken (JWT) for Login. Example: <b>Bearer <i>...token...<i></b>'
-		}
+			description: 'Simple Token Authentication * Example: <b>Token ...tokenKey...</b>'
+		},
 	},
-	security: [{ "JWT": true }],
+	security: [{ Token: [] }],
 	definitions: {
 		"/auth/login": {
 			username: {
