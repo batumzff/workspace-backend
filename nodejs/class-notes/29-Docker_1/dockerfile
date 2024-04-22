@@ -1,0 +1,14 @@
+# dockerfile doysaında uzantı yok isim farklı olmaz 
+# linux, node, hello.js
+
+FROM node:21-alpine3.18
+# çalışma alanı
+WORKDIR /app
+
+# hangi dosylar app e aktarılacak
+# COPY source dest
+COPY . .
+# COPY hello.js /app
+
+# build işelminden sonra 
+CMD node hello.js
